@@ -2,12 +2,10 @@
 <html>
 
 	<head>
-		<title>
-			<h1>Coreflex Code Assist</h1>
-		</title>
+		<title>Coreflex Code Assist</title>
 		
 		<meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href="css/reset.css">
+		<!-- <link rel="stylesheet" type="text/css" href="css/reset.css"> -->
 		<link rel="stylesheet" type="text/css" href="css/jquery-linedtextarea.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<script type="text/javascript" src="script/jquery-1.11.2.min.js"></script>
@@ -23,20 +21,23 @@
 		</header>
 	
 		<div class="container">
-			<div class="textareacontainer">
-				<div class="textarea">
-					<div style="width:auto;float:left;" class="headerText">Edit This Code:</div>
-					<div class="textareawrapper">
-						<textarea autocomplete="off" class="code_input" id="textareaCode" wrap="logical" xrows="30" xcols="50"></textarea>
+			<div class="data-container">
+				<div class="data">
+					<div style="width:auto;float:left;" class="header-text">Edit This Code:</div>
+					<div class="headerBtnDiv" style="width:auto;float:right;margin-top:8px;margin-right:2.4%;">
+						<button class="submit" type="button" onclick="submitTryit()">See Result &raquo;</button>
+					</div>
+					<div class="data-wrapper">
+						<textarea autocomplete="off" class="code-input" id="textarea-code" wrap="logical" xrows="30" xcols="50"></textarea>
 					</div>
 				</div>
 			</div>
 			
-			<div class="iframecontainer">
-				<div class="iframe">
-					<div class="headerText resultHeader">Result:</div>
-					<div class="iframewrapper">
-						<textarea xcols="50" xrows="30" wrap="logical" id="textareaCode" class="code_input" autocomplete="off"></textarea>
+			<div class="result-container">
+				<div class="result">
+					<div class="header-text">Result:</div>
+					<div class="result-wrapper">
+						<textarea autocomplete="off" class="code-input" id="textarea-code" wrap="logical" xrows="30" xcols="50"></textarea>
 					</div>
 				</div>
 			</div>

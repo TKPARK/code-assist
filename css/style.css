@@ -1,18 +1,115 @@
-html,body {
+/* to-be */
+html, body {
 	color:#000000;
 	margin:0px;
 	font-size:100%;
 	background-color:#e1e1e1;
 }
 
-#ads {
-	background-color:#ffffff;
-	height: 104px;
+.container {
 	width:100%;
-	margin-top:0px;
-	min-width:903px;
+	overflow:auto;
+	position:absolute;
+	top:80px;
+	bottom:0;
+	height:auto;
+	min-height:250px;
+	min-width:500px;
 }
 
+.data-container, .result-container {
+	float:left;
+	height:100%;
+	width:49%;
+}
+
+.data, .result {
+	position:absolute;
+	top:0;bottom:0;
+	width:48%;
+	margin:1%;
+	margin-top:0;
+	background-color:#f1f1f1;
+	border-radius:10px;
+	height:auto;
+}
+
+.header-text {
+	margin-top:12px;
+	margin-left:3%;
+	font-family:verdana;
+	font-size:1em;
+}
+
+.data-wrapper {
+	position:absolute;
+	top:42px;
+	bottom:2%;
+	left:2%;
+	width:96.5%;
+	height:auto;
+}
+
+.result-wrapper {
+	position:absolute;
+	top:42px;
+	bottom:2%;
+	left:2%;
+	width:96.5%;
+	height:auto;
+	-webkit-overflow-scrolling:touch;
+}
+
+#textarea-code {
+	font-family:consolas,"courier new",monospace;
+	font-size:14px;
+	height:96.5%;
+	width:98%;
+	border:1px solid #d3d3d3; 
+	border-radius:5px;
+	padding:0.5%;
+	resize: none;
+}
+
+.submit {
+    font-size:15px;
+    border-radius:4px;
+    background-color:#555555;
+    color:#ffffff;
+    border:1px solid #555555;
+    padding:4px 15px;
+    width:auto;
+	cursor:pointer;    
+}
+.submit:hover {
+    background-color:#777777;
+}.submit:active {
+    background-color:#222222;
+}
+
+@media only screen and (max-device-width: 768px) {
+  .result-wrapper {
+  overflow: auto;
+  }
+  @media screen and (orientation:portrait) {
+    #textareaCode {
+      font-size:18px;
+    }
+    .data-container, .result-container {
+    height:50%;
+    float:none;
+    width:98%;
+    }
+    .data, .result {
+    position:relative;
+    width:100%;
+    margin:0;
+    height:99%;
+	}
+  }
+}
+
+/* as-is
 .menu {
 	height:30px;
 	background-color:#555555;
@@ -32,17 +129,6 @@ html,body {
 	margin-right:2%;
 	float:right;
 	vertical-align:top;
-}
-
-.container {
-	width:100%;
-	overflow:auto;
-	position:absolute;
-	top:50px;
-	bottom:0;
-	height:auto;
-	min-height:250px;
-	min-width:500px;
 }
 
 #textareaCode {
@@ -189,3 +275,4 @@ html,body {
 	}
   }
 }
+ */
