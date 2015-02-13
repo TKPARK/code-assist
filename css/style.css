@@ -6,6 +6,10 @@ html, body {
 	background-color:#e1e1e1;
 }
 
+header {
+	padding-left:10px;
+}
+
 .container {
 	width:100%;
 	overflow:auto;
@@ -39,6 +43,24 @@ html, body {
 	margin-left:3%;
 	font-family:verdana;
 	font-size:1em;
+}
+
+.header-btn-div {
+	width:auto;
+	float:right;
+	margin-top:8px;
+	margin-right:2.4%;
+}
+
+.footer-text {
+	position:absolute;
+	bottom:0;
+	font-family:verdana;
+	font-size:0.8em;
+	width:97%;
+	padding-right:3%;
+	text-align:right;
+	padding-bottom:7px;
 }
 
 .data-wrapper {
