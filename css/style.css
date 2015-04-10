@@ -82,7 +82,7 @@ header {
 	-webkit-overflow-scrolling:touch;
 }
 
-#textarea-code {
+.code-input {
 	font-family:consolas,"courier new",monospace;
 	font-size:14px;
 	height:96.5%;

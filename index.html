@@ -5,9 +5,6 @@
 		<title>Coreflex Code Assist</title>
 		
 		<meta charset="utf-8">
-		<!-- <link rel="stylesheet" type="text/css" href="css/reset.css"> -->
-		<!-- <link rel="stylesheet" type="text/css" href="css/jquery-linedtextarea.css"> -->
-		<!-- <script type="text/javascript" src="script/jquery-linedtextarea.js"></script> -->
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<script type="text/javascript" src="script/jquery-1.11.2.min.js"></script>
 		<script type="text/javascript" src="script/script.js"></script>
@@ -17,18 +14,18 @@
 	<body>
 	
 		<header>
-			<h1>Coreflex Code Assist</h1>
+			<h1>Coreflex Code beautifier</h1>
 		</header>
 	
 		<div class="container">
 			<div class="data-container">
 				<div class="data">
-					<div style="width:auto;float:left;" class="header-text">Edit This Code:</div>
+					<div style="width:auto; float:left;" class="header-text">Edit This Code:</div>
 					<div class="header-btn-div">
-						<button class="submit" type="button" onclick="test()">See Result &raquo;</button>
+						<button class="submit" type="button" onclick="beautify()">Beautify &raquo;</button>
 					</div>
 					<div class="data-wrapper">
-						<textarea autocomplete="off" class="code-input" id="textarea-code" wrap="logical" xrows="30" xcols="50"></textarea>
+						<textarea autocomplete="off" class="code-input" id="source" wrap="logical" xrows="30" xcols="50"></textarea>
 					</div>
 				</div>
 			</div>
@@ -37,7 +34,7 @@
 				<div class="result">
 					<div class="header-text">Result:</div>
 					<div class="result-wrapper">
-						<textarea autocomplete="off" class="code-input" id="textarea-code" wrap="logical" xrows="30" xcols="50"></textarea>
+						<textarea autocomplete="off" class="code-input" id="result" wrap="logical" xrows="30" xcols="50"></textarea>
 					</div>
 					<div class="footer-text">Copyrightⓒ 2015 tkpark All rights reserved.</div>
 				</div>
