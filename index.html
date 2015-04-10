@@ -6,7 +6,10 @@
 		
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/jquery-linedtextarea.css" />
+		
 		<script type="text/javascript" src="script/jquery-1.11.2.min.js"></script>
+		<script type="text/javascript" src="script/jquery-linedtextarea.js"></script>
 		<script type="text/javascript" src="script/script.js"></script>
 		
 	</head>
@@ -16,7 +19,20 @@
 		<header>
 			<h1>Coreflex Code beautifier</h1>
 		</header>
+		
+		<section>
+			<div>
+			 	<textarea id="result" rows="44"></textarea>
+			 </div>
+			 
+			 <div class="header-btn-div">
+			 	<button class="submit" type="button" onclick="beautify()">Beautify &raquo;</button>
+			 </div>
+			 
+			 <div class="footer-text">Copyrightⓒ 2015 tkpark All rights reserved.</div>
+		</section>
 	
+		<!--
 		<div class="container">
 			<div class="data-container">
 				<div class="data">
@@ -40,6 +56,7 @@
 				</div>
 			</div>
 		</div>
+		-->
 	
 	</body>
 	

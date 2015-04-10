@@ -2,12 +2,16 @@
  * Copyrightⓒ 2015 tkpark All rights reserved.
  */
 
+// jQuery Function
+$(function() {
+  $("#result").linedtextarea();
+});
 
 function beautify() {
 	const SPACE = ' ';
 	
 	// INPUT
-	var source = document.getElementById('source').value;
+	var source = document.getElementById('result').value;
 	var lines = new Array();
 	lines = source.split('\n');
 	
