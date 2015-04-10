@@ -22,7 +22,7 @@ function beautify() {
 		var result_line = '';
 		
 		// #newrow
-		if(line.indexOf('#newrow') != -1 || line.indexOf('#cspan') != -1 || line.indexOf('#rspan') != -1) {
+		if(line.indexOf('type:"#newrow"') != -1 || line.indexOf('type:"#cspan"') != -1 || line.indexOf('type:"#rspan"') != -1) {
 			
 			if(line.substr(0, 1) == '{' && line.substr(line.length-2, line.length) == '},') {
 				result_line = line.substr(1, line.length-3);
@@ -176,7 +176,7 @@ function beautify() {
 		var result_line = '';
 		
 		// #newrow
-		if(line.indexOf('#newrow') != -1 || line.indexOf('#cspan') != -1 || line.indexOf('#rspan') != -1) {
+		if(line.indexOf('type:"#newrow"') != -1 || line.indexOf('type:"#cspan"') != -1 || line.indexOf('type:"#rspan"') != -1) {
 			
 			if(line.substr(0, 1) == '{' && line.substr(line.length-2, line.length) == '},') {
 				result_line = line.substr(1, line.length-3);
