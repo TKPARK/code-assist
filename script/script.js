@@ -25,8 +25,14 @@ function beautify() {
 		var isSkip = false;
 		var result_line = '';
 		
+		
+		//
+		if(line.substr(0, 2) == '//') {
+			result = result + line + '\n';
+			continue;
+		}
 		// #newrow
-		if(line.indexOf('type:"#newrow"') != -1 || line.indexOf('type:"#cspan"') != -1 || line.indexOf('type:"#rspan"') != -1) {
+		else if(line.indexOf('type:"#newrow"') != -1 || line.indexOf('type:"#cspan"') != -1 || line.indexOf('type:"#rspan"') != -1) {
 			
 			if(line.substr(0, 1) == '{' && line.substr(line.length-2, line.length) == '},') {
 				result_line = line.substr(1, line.length-3);
@@ -179,8 +185,13 @@ function beautify() {
 		var isSkip = false;
 		var result_line = '';
 		
+		//
+		if(line.substr(0, 2) == '//') {
+			result = result + line + '\n';
+			continue;
+		}
 		// #newrow
-		if(line.indexOf('type:"#newrow"') != -1 || line.indexOf('type:"#cspan"') != -1 || line.indexOf('type:"#rspan"') != -1) {
+		else if(line.indexOf('type:"#newrow"') != -1 || line.indexOf('type:"#cspan"') != -1 || line.indexOf('type:"#rspan"') != -1) {
 			
 			if(line.substr(0, 1) == '{' && line.substr(line.length-2, line.length) == '},') {
 				result_line = line.substr(1, line.length-3);
