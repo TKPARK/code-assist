@@ -7,6 +7,46 @@ $(function() {
   $("#result").linedtextarea();
 });
 
+window.onload = function() {
+	
+	var default_text =
+        '// supported attributes:\n' +
+        '//   colId: column Id\n' +
+        '//   label: column label\n' +
+        '//   type:[dyn,ed,edn,edtxt,txt,price,ch,coro,ra,ro,dd,ddro,lookup] (default ro)\n' +
+        '//   width: column width (*:variable) (default 50)\n' +
+        '//   minWidth: minimum column width (default 20)\n' +
+        '//   align: align of values in columns [right,left,center,justify] (default left)\n' +
+        '//   sort:[int,str,date,na,sortingFunction] (default str)\n' +
+        '//   updatable: (boolean) is the column updatable?\n' +
+        '{colId:"seTp",label:literal.seTp,type:"dd",width:160,align:"center",minWidth:20,sort:"str",updatable:true,dd:"C_SE_TP"}, /* Securities */\n' +
+        '{colId:"ioTp",label:literal.ioTp,type:"dd",width:160,align:"center",dd:"C_IO_TP"}, /* Transaction */\n' +
+        '{colId:"dt",label:literal.dt,type:"romask",width:160,align:"center",mask:"####/##/##"}, /* Date */\n' +
+        '{colId:"bisnRmkCd",label:literal.bisnRmkCd,type:"lookup",width:50,align:"center"}, /* Account Transaction Code */\n' +
+        '{colId:"bisnRmkNm",label:"#cspan",type:"ro",width:"*",align:"left"}, /* Account Transaction Name */\n' +
+        '{type:"#newrow"},\n' +
+        '{colId:"dataOcrTp",label:literal.dataOcrTp,type:"dd",width:160,align:"center",dd:"C_MATR_OCUR_TP"}, /* Process */\n' +
+        '{colId:"exchTp",label:literal.exchTp,type:"dd",width:160,align:"center",dd:"C_ALTN_TP"}, /* Transfer */\n' +
+        '{colId:"qt",label:literal.qt,type:"ron",width:160,align:"right",numberFormat:"0,000"}, /* Qt */\n' +
+        '{colId:"acctUpdCd",label:literal.acctUpdCd,type:"lookup",width:50,align:"center"}, /* Balance Update Code */\n' +
+        '{colId:"acctUpdNm",label:"#cspan",type:"ro",width:"*",align:"left"} /* Balance Update Name */';
+	document.getElementById('result').value = default_text;
+}
+
+function test() {
+	// INPUT
+	var source = document.getElementById('result').value;
+	var lines = new Array();
+	lines = source.split('\n');
+	
+	for(var i=0; i<lines.length; i++) {
+		var line = trim(lines[i], 1);
+		
+		console.log("line: " + line);
+	}
+}
+
+
 function beautify() {
 	const SPACE = ' ';
 	
@@ -19,14 +59,34 @@ function beautify() {
 	var result = '';
 	
 	var valuesMaxLength = new Array();
+	var arr_comments = new Array(lines.length);
+	var arr_lineLength = 0;
 	
 	for(var i=0; i<lines.length; i++) {
-		var line = trim(lines[i], 1);
+		//var line = trim(lines[i], 1);
+		var line = lines[i];
 		var isSkip = false;
 		var result_line = '';
 		
 		
-		//
+		// Comment
+		if(line.indexOf('//') != -1) {
+			arr_comments[i] = line.substr(line.indexOf('//'), line.length);
+			line = line.substr(0, line.indexOf('//'));
+		}
+		else if(line.indexOf('/*') != -1) {
+			arr_comments[i] = line.substr(line.indexOf('/*'), line.length);
+			line = line.substr(0, line.indexOf('/*'));
+		}
+		else {
+			arr_comments[i] = '';
+		}
+		
+		line = trim(line, 1);
+		
+		/**
+		 * Validation
+		 */
 		if(line.substr(0, 2) == '//') {
 			result = result + line + '\n';
 			continue;
@@ -55,6 +115,7 @@ function beautify() {
 			line = line.substr(1, line.length-2);
 		}
 		else {
+			result = result + line + '\n';
 			continue;
 		}
 		
@@ -177,7 +238,7 @@ function beautify() {
 		}
 	}
 	
-	//
+	// Line up
 	lines = result.split('\n');
 	result = '';
 	for(var i=0; i<lines.length; i++) {
@@ -214,6 +275,7 @@ function beautify() {
 			line = line.substr(1, line.length-2);
 		}
 		else {
+			result = result + line + '\n';
 			continue;
 		}
 		
@@ -289,12 +351,36 @@ function beautify() {
 		}
 		
 		if(i == lines.length-1) {
-			result = result + '{' + result_line + '}';
+			result_line = '{' + result_line + '}';
+			result = result + result_line;
 		} else {
-			result = result + '{' + result_line + '},\n';
+			result_line = '{' + result_line + '},';
+			result = result + result_line+ '\n';
+		}
+		
+		arr_lineLength = result_line.length > arr_lineLength ? result_line.length : arr_lineLength;
+	}
+	
+	// set Comments
+	lines = result.split('\n');
+	result = '';
+	for(var i=0; i<arr_comments.length; i++) {
+		var line = lines[i];
+		
+		var diff = (arr_lineLength + 2) - line.length;
+		for(var d=0; d<diff; d++) {
+			arr_comments[i] = SPACE + arr_comments[i];
+		}
+		line = trim(line + arr_comments[i], 2);
+		
+		if(i == lines.length-1) {
+			result = result + line;
+		} else {
+			result = result + line + '\n';
 		}
 	}
-	//
+	
+	// OUTPUT
 	document.getElementById('result').value = result;
 	console.log('result: ' + result);
 }
@@ -899,9 +985,9 @@ function test1() {
  * @param value : 1.전체 공백제거, 2.앞,뒤 공백제거
  */
 function trim(str, value) {
-  if(value == 1) {
-    return str.replace(/(\s*)/g, ''); // 전체 공백제거
-  }else {
-    return str.replace(/^\s*|\s*$/g, ''); // 앞,뒤 공백제거
-  }
+	if(value == 1) {
+		return str.replace(/(\s*)/g, ''); // 전체 공백제거
+	} else {
+		return str.replace(/^\s*|\s*$/g, ''); // 앞,뒤 공백제거
+	}
 }
