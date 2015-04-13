@@ -33,6 +33,12 @@ window.onload = function() {
 	document.getElementById('result').value = default_text;
 }
 
+function txtClear() {
+	var result = document.getElementById('result');
+	result.value = '';
+	result.focus();
+}
+
 function test() {
 	// INPUT
 	var source = document.getElementById('result').value;
@@ -382,7 +388,7 @@ function beautify() {
 	
 	// OUTPUT
 	document.getElementById('result').value = result;
-	console.log('result: ' + result);
+	//console.log('result: ' + result);
 }
 
 
